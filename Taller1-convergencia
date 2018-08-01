@@ -1,0 +1,108 @@
+#include <bits/stdc++.h>
+
+
+using namespace std;
+
+vector<double> errores;
+double Eactual;
+vector<double> particion(int derecha, int izquierda, int particiones){
+
+	int i;
+	double rc, aux;
+	vector<double> segmentos;
+
+	rc =  (derecha-izquierda);
+	rc = rc/particiones; 
+
+	segmentos.push_back(izquierda);
+	aux = izquierda + rc;
+	for(i = 1; i< particiones; i++){
+		segmentos.push_back(aux);
+		aux = aux + rc;
+	}
+	segmentos.push_back(derecha);
+
+	return segmentos;
+}
+
+double evaluar(double x){
+//aquí se puede cambiar la función que será evaluada
+	return x * x- 2;
+}
+
+double error(double actual, double viejo){
+
+	double auxiliar;
+	
+	auxiliar = actual - viejo;
+	auxiliar = auxiliar/actual;
+
+	if(auxiliar < 0)
+		auxiliar = auxiliar * -1;
+	auxiliar = auxiliar * 100;
+
+	return auxiliar;			
+}
+
+bool OrdenLineal(){
+
+  for(int i = 0; i<errores.size() -1 ; i++){
+   if(errores[i] <  errores[i+1])
+	return false;
+  }
+ 	return true;
+}
+bool OrdenN(int n){
+
+  for(int i = 0; i<errores.size() -1 ; i++){
+   if(pow(errores[i], n)<  errores[i+1])
+	return false;
+  }
+ 	return true;
+}
+
+double test(int derecha, int izquierda, int particiones){
+
+	
+	double tet;
+	vector<double> segmentos;
+	segmentos = particion(derecha, izquierda, particiones);
+	
+	for(int i = 0; i< segmentos.size()-1; i++){
+	
+		tet = evaluar(segmentos[i])*evaluar(segmentos[i+1]);
+		Eactual = error(segmentos[i], segmentos[i+1]);
+		errores.push_back(Eactual);
+		if(Eactual <= 35){
+		 return segmentos[0];
+		}
+		if(tet > 0) test(derecha,  segmentos[i+1], particiones);
+		else test(segmentos[i+1], segmentos[i], particiones); 
+	}
+}
+
+int main(){
+
+	int particiones, izquierda, derecha,n;
+	
+	vector<double> segmentos;
+	double result;
+
+	cout<<"Número de particiones: "<<endl;
+	cin>>particiones;
+	cout<<"Intervalo izquierda: "<<endl;
+	cin>> izquierda;
+	cout<<"Intervalo derecha: "<<endl;
+	cin>> derecha;
+	result = test(derecha, izquierda, particiones);
+	cout<<"Resultado: "<<result<<endl;
+	cout<<"Grado del polinomio: "<<endl;
+	cin>>n;
+
+	if(OrdenLineal()==true){
+		cout<<"Convergencia de orden lineal" <<endl;
+	}
+	if(OrdenN(n)==true){
+		cout<<"Convergencia de orden "<<n<<endl;
+	}
+}
