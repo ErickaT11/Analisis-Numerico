@@ -15,7 +15,7 @@ int main () {
     return 0; 
 }
 double funcion(double h){     
-    return h*h*h - 32*h*h - 24*h*h - 768* h - 1000;
+    return 4*h*h*h - 112*h*h + 768*h;
 } 
 double biseccion(double a,double b,int it,double tolerancia){ 
     int cont=1; 
