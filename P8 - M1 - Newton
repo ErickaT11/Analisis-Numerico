@@ -120,3 +120,6 @@ void newton(double x0, double tolerancia, int max_iteraciones)
 		cout << "\n\nSe sobrepasa la maxima cantidad de iteraciones permitidas" << endl;
 	}
 }
+
+
+//Referencia de Algoritmos y algo más
