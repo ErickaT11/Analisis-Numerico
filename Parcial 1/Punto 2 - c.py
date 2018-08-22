@@ -7,7 +7,9 @@ def calcularError(apr, exact):
     return ((apr - exact)/ exact)*100
 
 evaluadoA = 0
-x = 0
+x = 0.005 #semilla
 while calcularError(evaluadoA , 1.6314435) < 0.0000001:
     evaluadoA =  x+1 + evaluarFuncion(x)*((x-(x-1))/(evaluarFuncion(x))-(evaluarFuncion(x-1)))
-    x+=0.0000001
+    x+=0.005
+    
+print(evaluadoA)
