@@ -71,9 +71,8 @@ def simplex(c, A, b):
 
    while continua(tableau):
       pivot = indicePivote(tableau)
-      print("Next pivot index is=%d,%d \n" % pivot)
+      print("indice pivote=%d,%d \n" % pivot)
       pivotAbout(tableau, pivot)
-      print("Tableau after pivot:")
       for row in tableau:
          print(row)
       print()
