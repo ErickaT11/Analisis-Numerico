@@ -95,3 +95,14 @@ objetivo += [0,0]
 t, s, v = simplex(objetivo, restricciones, constantes)
 print(s)
 print("{0:.2f}".format(v))
+
+
+# Análisis comparativo:
+# El valor con precisión de dos cifras decimales es 5.12. Enteras, es 5. 
+# Con el número completo, con una aproximación de n>10. Tenemos: 5.123056994818652
+# ¿Qué precisión es la recomendada? La programación lineal, está orientada a problemas de optimización; es decir,
+# maximizar ganancias o minimizar las perdidas. Por tanto, entre la precisión sea mayor; es decir n>2, 
+# se reduce el riesgo de pérdida en casos de aplicación.
+
+
+
