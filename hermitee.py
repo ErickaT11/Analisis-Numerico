@@ -26,15 +26,3 @@ def Hermite(punto,val,derivada):
     poly = sympify(strPoly)
     print(poly)
     return poly
-
-def agregar(x,punto):
-    
-    if x == 0:
-        string = ""
-        return string
-    if x % 2 == 1 :
-        string = "*(x-"+str(punto[((x+1)//2)-1])+")"    
-        return string + agregar(x-1,punto)
-    else : 
-        string = "*((x-"+str(punto[((x+1)//2)-1])+")**2)"     
-        return string + agregar(x-2,punto)
