@@ -11,11 +11,11 @@ def DistribucionN(s, u, x):
     return valor
 
 #Sumas de las areas fragmentadas
-def Sreinman(inferior, superior, xTotal, sigma, u):
+def Sreinman(inferior, superior, x, sigma, u):
     acercamiento = 0
     while inferior < superior:
-        acercamiento += Area(xTotal,DistribucionN(inferior + (xTotal/2), sigma, u))
-        inferior += xTotal
+        acercamiento += Area(x,DistribucionN(inferior + (x/2), sigma, u))
+        inferior += x
     return acercamiento
     
 print(Sreinman(-20,0,1,1,0))
