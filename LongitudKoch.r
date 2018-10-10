@@ -33,13 +33,13 @@ graficar<-function(n){
     y1=x[i-1,2]
     x2=x[i,1]
     y2=x[i,2]
-    total=total+distancia (x1, y1, x2, y2)
+    total=total+1
   }
   x1=x[nrow(x),1]
   y1=x[nrow(x),2]
   x2=x[1,1]
   y2= x[1,2]
-  total=total+distancia (x1, y1, x2, y2)
-  cat("El perimetro de la curva de Koch con n = ", n, " es: ", format(round(total,4), nsmall=4), "y el valor teorico es ",format(round(valorTeorico(n),4), nsmall=4), "(Error de",format(round(errorPerimetro(n,total),4))," )")
+  total=(total+1)*distancia (x1, y1, x2, y2)
+  cat("El perimetro de la curva de Koch con n = ", n, " es: ", round(total,4), "y el valor teorico es ",format(round(valorTeorico(n),4), nsmall=4), "(Error de",format(round(errorPerimetro(n,total),4))," )")
 }
 graficar(4)
